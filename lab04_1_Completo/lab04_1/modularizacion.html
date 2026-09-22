@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <title>..:: Semana 05::..</title>
+    <link rel="stylesheet" href="./css/estilos.css" />
+</head>
+
+<body>
+    <h1>Modularización</h1>
+    <p>
+    <h2>Antecedentes</h2>
+    JavaScript se ha estandarizado en lo que se conoce como ES6 (ECMAScript 2015)
+    Antes de eso no existia un estandar para generar modulos. Lo existente se convirtio en estandar de-facto
+    (CommonJS, RequireJS, AMD).
+    </p>
+    <p>
+    <h2>Problema</h2>
+    Al programar JS se dividia el código en archivos que se concatenaban al generar la aplicación para producir un
+    único archivo fuente. Esta práctica, podia generar varios problemas:
+
+    colisiones de nombres entre archivos (por ejemplo: una misma variable global declarada en archivos distintos).
+    multiples referencias al mismo archivo podían resultar en el mismo código siendo ejecutado varias veces
+    </p>
+
+    <p>
+    <h2>Solucion:</h2>
+    Se introduce el concepto de modulo como una unidad aislada:
+    <ol>
+        <li>Cada modulo posee su propio scope lo que previene las colisiones de nombre.</li>
+        <li>Cada modulo es una clase de tipo singleton que puede ser importado varias veces en distintos momentos.</li>
+    </ol>
+    </p>
+    <br><br>
+    <p> Algunas formas de modularizar en JS:
+        <br><br>
+    <ol>
+        <li><strong>Expresión de función inmediatamente invocada (IIFE)</strong>
+            <p>Son funciones que se ejecutan tan pronto como se definen.
+                <code><pre>
+                    (function () {
+                        var nombre = "Pepito";
+                      })();
+                      // La Variable nombre NO es accesible fuera del ambito de la funcion
+                      nombre; // Lanza una exception  "Uncaught ReferenceError: nombre is not defined"
+                </pre></code>
+            </p>
+        </li>
+        <li><strong>CommonJS (CJS)</strong>
+            <p>Es el sistema de módulos utilizado principalmente en Node.js antes de la introducción de los módulos ES.
+                Los módulos CommonJS se cargan sincrónicamente, lo que significa que bloquean su ejecución hasta que se cargan. 
+                Esto es ideal para aplicaciones del lado del servidor, pero menos adecuado para código del lado del cliente, donde se prefiere la carga asíncrona.
+                <br>
+                Sintaxis: CommonJS se utiliza require()para cargar módulos y module.exports/o exportsexportarlos.
+                <code><pre>
+                    // Import
+                    const fs = require('fs');
+                   
+                    // Export
+                    module.exports = function () {
+                      console.log("Hello from CJS");
+                    };
+                </pre></code>
+              
+                
+            </p>
+
+        </li>
+        <li><strong>Definición de módulo asíncrono (AMD)</strong>
+            <p>Carga módulos y sus dependencias de forma asincrónica. 
+                Con origen en Dojo Toolkit, AMD está diseñado para aplicaciones del lado del cliente y no requiere herramientas adicionales. 
+                Solo requiere la biblioteca RequireJS, un cargador de módulos en el navegador. 
+            </p>
+            <code><pre>
+                requirejs(
+                    ["react", "react-dom"],
+                    (React, ReactDOM) => {
+                        ReactDOM.render(
+                            React.createElement(
+                                "p",
+                                {},
+                                "Greetings!"
+                            ),
+                            document.getElementById("root")
+                        );
+                    }
+                );
+            </pre></code>
+            <p>
+                AMD no es tan popular como los formatos de módulos más modernos, como los módulos ECMAScript y la definición de módulo universal.
+            </p>
+        </li>
+        <li><strong>Definición de módulo universal (UMD)</strong>
+            <p>ofrece una solución unificada para hacer que los módulos sean compatibles con muchos formatos de módulo diferentes, como CommonJS y AMD.</p>
+        </li>
+        <li><strong>Módulos ECMAScript (ESM)</strong>
+            <p>
+                Los módulos ECMAScript (ESM), es la forma estándar y oficial de manejar módulos en JavaScript. Este formato de
+                módulo se usa comúnmente en aplicaciones TypeScript.
+            </p>
+            <p>
+                Al igual que CommonJS, ESM proporciona varias formas de exportar código: exportaciones predeterminadas o
+                exportaciones con nombre.
+                <code><pre>
+                    export function calcularArea() {
+                        return Math.PI * Math.pow(radio, 2);
+                      }
+                </pre></code>
+        
+            </p>
+        </li>
+    </ol>
+    </p>
+    <br><br>
+    <a href="index.html">Regresar</a>
+    
+    <script src="./js/modularizacion.js"></script>
+</body>
+
+</html>

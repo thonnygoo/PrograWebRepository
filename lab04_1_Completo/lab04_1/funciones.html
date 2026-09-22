@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>..::Funciones ::..</title>
+    <link rel="stylesheet" href="./css/estilos.css" />
+</head>
+
+<body>
+    <h1>Funciones</h1>
+    <br>
+    <p>
+        Una definición de función (también denominada declaración de función o expresión de función) consta de la
+        palabra clave function, seguida de:
+    <ul>
+        <li>El nombre de la función.</li>
+        <li>Una lista de parámetros de la función, entre paréntesis y separados por comas.</li>
+        <li>Las declaraciones de JavaScript que definen la función, encerradas entre llaves, { ... }.</li>
+    </ul>
+    </p>
+    <p> Ejemplo:
+        <code>
+            <pre>
+            function elevaAlCuadrado(n) {
+                return n * n;
+              }
+            </pre>
+        </code>
+    </p>
+    <br>
+    <p>En este caso "n" es pasado como VALOR (por que es un tipo primitivo</p>
+    <br><br>
+    <p>Otra manera de declarar funciones:</p>
+    <code>
+        <pre>
+        const elevaAlCuadrado = function (n) {
+            return n * n;
+          }
+        </pre>
+    </code>
+    <br><br>
+    <p>O tambien:</p>
+    <code>
+        <pre>
+        const elevaAlCuadrado = function cuadrado (n) {
+            return n * n;
+          }
+        </pre>
+    </code>
+
+    <input type="number" id="numero"/>
+    <input type="button" value="F A C T O R I A L" onclick="proceso();"/>
+    <p>EL factorial es : </p><div id="rpta"></div>
+
+
+    <br><br>
+    <a href="index.html">Regresar</a>
+</body>
+
+<script src="./js/funciones.js"></script>
+</html>
